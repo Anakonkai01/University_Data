@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 
-abstract public class SinglyLinkedList {
+
+public class SinglyLinkedList{
     private Node head;
     // addFirst, addLast, removeFirst, removeLast, removeNode, print, findNode
     public SinglyLinkedList(){
@@ -134,20 +131,109 @@ abstract public class SinglyLinkedList {
         }
     }
     
+    public void reverse_Linked_List(){
+        Node curr = head;
+        Node next = null;
+        Node prev = null;
 
-    abstract public Node reverseLinkedList();
-    
-    public static void main(String[] args) {
-        SinglyLinkedList list = new ExtendMethod();
+        while (curr != null) {
+            next = curr.getNext();
+            curr.setNext(prev);
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
 
+    public Node reverse_Linked_List(Node head){
+        Node curr = head;
+        Node next = null;
+        Node prev = null;
 
-        list.addFirst(1);
-        // list.addFirst(2);
-        // list.addFirst(3);
-        list.removeLast();
-        list.print();
+        while (curr != null) {
+            next = curr.getNext();
+            curr.setNext(prev);
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
 
+    public static Node mergeTwoLists(Node list1, Node list2){
+        Node dummyNode = new Node(0);
+        Node returnNode = dummyNode;
 
+        while(list1 != null && list2 != null){
+            if(list1.getData() < list2.getData()){
+                dummyNode.setNext(list1);
+                dummyNode = dummyNode.getNext();
+                list1 = list1.getNext();
+            }
+            else{
+                dummyNode.setNext(list2);
+                dummyNode = dummyNode.getNext();
+                list2 = list2.getNext();
+            }
+        }
+
+        if(list1 != null){
+            dummyNode.setNext(list1);
+        }
+
+        if(list2 != null){
+            dummyNode.setNext(list2);
+        }
+
+        return returnNode.getNext();
+    }
+
+    public void sortLinkedList(){
+        Node curr = head;
+        while(curr.getNext() != null){
+            Node min = curr;
+            Node dummyNode = curr.getNext();
+
+            while(dummyNode != null){
+                if(dummyNode.getData() < min.getData()) min = dummyNode;
+                dummyNode = dummyNode.getNext();
+            }
+
+            // swap
+            int temp = min.getData();
+            min.setData(curr.getData());
+            curr.setData(temp);
+
+            curr = curr.getNext();
+        }
+    }
+
+    public void reorderList() {
+        // dung ki thuat fast and slow pointer
+        Node slow = head;
+        Node fast = head;
+
+        // (fast == null) ? "chan": "le"
+        // slow = middle of the list
+        while(fast != null && fast.getNext() != null){
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+        }
         
+        // reverse the list after the slow pointer
+        
+        Node list2 = reverse_Linked_List(slow.getNext()); // phan phia sau se dao nguoc
+        slow.setNext(null); // ngat doi ra 2 phan
+        Node list1 = head; // phan dau tien
+        
+        while(list2 != null){
+            Node next1 = list1.getNext(); // du cho cho thang list1
+            Node next2 = list2.getNext(); // du cho cho thang list2
+
+            list1.setNext(list2);
+            list2.setNext(next1);
+
+            list1 = next1;
+            list2 = next2;
+        }
     }
 }
