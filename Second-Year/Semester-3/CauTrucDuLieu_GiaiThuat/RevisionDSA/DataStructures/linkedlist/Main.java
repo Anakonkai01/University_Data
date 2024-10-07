@@ -1,4 +1,5 @@
 
+package linkedlist;
 
 import java.util.Random;
 
@@ -29,7 +30,7 @@ public class Main {
         list1.addLast(4);
         list1.addLast(6);
         list1.addLast(8);
-        list1.reorderList();
-        list1.print();
+        Node head = list1.reOrderList(list1.getHead());
+        print(head);
     }    
 }

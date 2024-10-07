@@ -1,3 +1,5 @@
+package linkedlist;
+
 public class Node {
     private Integer data;
     private Node next;

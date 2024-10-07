@@ -1,4 +1,4 @@
-
+package linkedlist;
 
 public class SinglyLinkedList{
     private Node head;
@@ -236,4 +236,34 @@ public class SinglyLinkedList{
             list2 = next2;
         }
     }
+
+    public Node reOrderList(Node head){
+        Node slow = head;
+        Node fast = head;
+        
+        while (fast != null && fast.getNext() != null) {
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+        }
+
+        Node list2 = slow.getNext();
+        list2 = reverse_Linked_List(list2);
+        slow.setNext(null);
+        Node list1 = head;
+
+        while(list2 != null){
+            Node next1 = list1.getNext();
+            Node next2 = list2.getNext();
+
+            list1.setNext(list2);
+            list2.setNext(next1);
+
+            list1 = next1;
+            list2 = next2;
+        }
+
+        return head;
+    }
+
+    
 }
