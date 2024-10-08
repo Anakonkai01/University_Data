@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.Stack;
 
 public class Dequy {
@@ -95,9 +93,19 @@ public class Dequy {
     // valid parenthesis
     // EvalNumber
 
+    public static double gcd(double a, double b) {
+        if (b == 0)
+            return a;
+        return gcd(a, a % b);
+    }
+
+    public static int combination(int k, int n) {
+        if (k == 0 || k == n)
+            return 1;
+        return combination(k - 1, n - 1) + combination(k, n - 1);
+    }
+
     public static void main(String[] args) {
-        int n = 4;
-        List<String> lStrings = generateParenthesis(n);
-        System.out.println(lStrings);
+        System.out.println(combination(3, 5));
     }
 }

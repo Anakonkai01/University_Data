@@ -65,7 +65,7 @@ public class InfixToRPN {
     }
 
     public static void main(String[] args) {
-        String expression = "((1+2)*3)-4"; // Input expression
+        String expression = "(1+2)*3"; // Input expression
 
         List<String> rpn = infixToRPN(expression);
         System.out.println("Reverse Polish Notation (RPN): " + rpn);
