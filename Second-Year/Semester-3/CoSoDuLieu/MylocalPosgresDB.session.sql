@@ -52,7 +52,22 @@ INSERT INTO sinhvien_detai VALUES
 
 
 -- cau 2
+-- Cau lenh trong postgres
 CREATE VIEW cau2_a AS
 SELECT * FROM sinhvien
 WHERE EXTRACT(YEAR FROM AGE(NgaySinh)) < 20 AND hocluc > 8.5;
+-- Cau lenh trong SQL server
+-- CREATE VIEW cau2_a AS
+-- SELECT * FROM Sinhvien
+-- WHERE DATEDIFF(YEAR, NgaySinh, GETDATE()) < 20 AND HocLuc > 8.5;
+
+CREATE VIEW cau2_b AS
+SELECT * FROM detai 
+WHERE KinhPhi > 1000000;
+
+
+CREATE VIEW cau2_c AS
+SELECT sinhvien.*, sinhvien_detai.KetQua FROM Sinhvien
+JOIN sinhvien_detai ON sinhvien.Masv = sinhvien_detai.Masv
+WHERE sinhvien_detai.KetQua >= 8 AND EXTRACT(YEAR FROM AGE(Sinhvien.NgaySinh)) < 20 AND sinhvien_detai.KetQua > 8;
 
