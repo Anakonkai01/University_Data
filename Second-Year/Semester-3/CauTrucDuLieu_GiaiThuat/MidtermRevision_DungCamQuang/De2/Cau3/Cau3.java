@@ -1,18 +1,17 @@
 
 public class Cau3 {
-    public static int productOfDivideBy3Nums(int[] a, int k) {
-        // codeeeee ehrehrerehrhehrhe
+    public static int productOfKeys(int[] a, int k, int key) {
+        // code here
         if (k < 0) {
             return 1;
         }
-        if (a[k] % 3 == 0) {
-            return a[k] * productOfDivideBy3Nums(a, k - 1);
-        }
-        return productOfDivideBy3Nums(a, k - 1);
+        if (a[k] == key)
+            return key * productOfKeys(a, k - 1, key);
+        return productOfKeys(a, k - 1, key);
     }
 
     public static void main(String[] args) {
         int[] a = {};
-        System.out.println(productOfDivideBy3Nums(a, a.length - 1));
+        System.out.println(productOfKeys(a, a.length - 1, 3));
     }
 }

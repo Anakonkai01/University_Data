@@ -1,6 +1,7 @@
 
 public class StringLinkedList implements LinkedListInterface {
     private Node head;
+    private int size = 0;
 
     public StringLinkedList() {
         this.head = null;
@@ -11,73 +12,86 @@ public class StringLinkedList implements LinkedListInterface {
     }
 
     // a
-    public boolean addFirst(String text) {
+    public void add(String text) {
         // CODE HERE BOYYYY
-        Node curr = head;
-        while (curr != null) {
-            if (curr.getValue().equals(text)) {
-                return false;
-            }
-            curr = curr.getNext();
+        String tmp = text.toLowerCase();
+        if (tmp.charAt(0) == 'u' || tmp.charAt(0) == 'e' || tmp.charAt(0) == 'o' || tmp.charAt(0) == 'a'
+                || tmp.charAt(0) == 'i') {
+            addFirst(text);
+        } else {
+            addLast(text);
         }
+        size++;
+    }
 
+    private void addFirst(String text) {
         head = new Node(text, head);
-        return true;
+    }
+
+    private void addLast(String text) {
+        if (head == null) {
+            addFirst(text);
+        } else {
+            Node curr = head;
+            while (curr.getNext() != null) {
+                curr = curr.getNext();
+            }
+            Node newNode = new Node(text, null);
+            curr.setNext(newNode);
+        }
     }
 
     // b
-    public boolean updateString(String text, int pos) {
-        // CODE HERERRERER
+    public int remove(String text) {
+        // code here
 
-        if (head == null) {
-            return false;
-        }
-        if (head.getNext() == null || pos == 0) {
-            head = new Node(text, null);
-            return true;
-        }
-
-        int index = 0;
-        Node curr = head;
-        Node prev = null;
-
-        while (curr != null) {
-            if (index == pos) {
-                Node newNode = new Node(text, null);
-                newNode.setNext(curr.getNext());
-                prev.setNext(newNode);
-                return true;
-            }
-            prev = curr;
-            curr = curr.getNext();
-            index++;
-        }
-        return false;
-    }
-
-    // c
-    public int countKey(String key, int begin, int end) {
-        // code hrererererere
         if (head == null) {
             return -1;
         }
-
-        int i = 0;
-        int count = 0;
-        Node curr = head;
-        while (curr != null) {
-            if (i >= begin && i <= end && curr.getValue().equals(key)) {
-                count++;
-            }
-            curr = curr.getNext();
-            i++;
+        if (head.getNext() == null && head.getValue().equals(text)) {
+            head = null;
+            return 0;
         }
-        return count;
+
+        int finder_index = 0;
+        int spot_index = -1;
+        Node finder = head;
+        Node spot = null;
+        Node prevFinder = null;
+        Node prevSpot = null;
+
+        while (finder != null) {
+            if (finder.getValue().equals(text)) {
+                spot_index = finder_index;
+                prevSpot = prevFinder;
+                spot = finder;
+            }
+            finder_index++;
+            prevFinder = finder;
+            finder = finder.getNext();
+        }
+
+        if (head.getValue().equals(text) && spot != null) {
+            head = head.getNext();
+        } else {
+            prevSpot.setNext(spot.getNext());
+        }
+        return spot_index;
     }
 
-    // test for problem c
-    public void add(String text) {
-        head = new Node(text, head);
+    // c
+    public int[] stringLength() {
+        // code hrererererere
+        int[] res = new int[size];
+
+        Node curr = head;
+        int i = 0;
+        while (curr != null) {
+            res[0] = curr.getValue().length();
+            i++;
+            curr = curr.getNext();
+        }
+        return res;
     }
 
 }

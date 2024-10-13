@@ -1,8 +1,8 @@
 
 public interface LinkedListInterface {
-    boolean addFirst(String text);
+    void add(String text);
 
-    boolean updateString(String text, int pos);
+    int remove(String text);
 
-    int countKey(String key, int begin, int end);
+    int[] stringLength();
 }
