@@ -134,3 +134,4 @@ join Duan as da on da.MaDA = pc.MaDA
 where da.diadiem = 'Da Nang' and pc.NgayBD > '2021-01-01' pc.NgayKT < '2023-12-31'
 
 
+
