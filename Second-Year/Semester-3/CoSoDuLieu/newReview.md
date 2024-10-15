@@ -88,4 +88,34 @@ select
 from Nhanvien as nv 
 join Phancong as pc on pc.MaNV = nv.MaNV
 join Duan as da on da.MaDA = pc.MaDA
+group by nv.MaNV,nv.Hoten
 
+-- cau 8
+delete from Nhanvien 
+where MaNV NOT IN (
+  select MaNV from Phancong 
+  where YEAR(GETDATE()) - YEAR(NgayBD) = 2
+)
+
+-- cau 8 su dung left join 
+-- toi ko biet lam left join, nho chatgpt giup toi
+
+
+-- cau 9
+select 
+  da.MaDA,
+  da.TenDA
+from Duan as da 
+join Phancong as pc on pc.MaDA = da.MaDA
+group by da.MaDA, da.TenDA
+having count(da.TruongDuan) >= count(pc.MaNV);
+
+
+
+-- cau 10 
+select 
+  top 1
+  distinct da.TruongDuAn 
+from Duan as da 
+group by da.TruongDuAn
+order by count(diadiem) desc
