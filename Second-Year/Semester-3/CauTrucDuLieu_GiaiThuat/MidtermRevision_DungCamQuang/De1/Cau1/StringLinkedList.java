@@ -32,7 +32,7 @@ public class StringLinkedList implements LinkedListInterface {
         if (head == null) {
             return false;
         }
-        if (head.getNext() == null || pos == 0) {
+        if (pos == 0) {
             head = new Node(text, null);
             return true;
         }
@@ -78,6 +78,58 @@ public class StringLinkedList implements LinkedListInterface {
     // test for problem c
     public void add(String text) {
         head = new Node(text, head);
+    }
+
+    void addAfter(String text, Node curr) {
+        Node newNode = new Node(text, null);
+        newNode.setNext(curr.getNext());
+        curr.setNext(newNode);
+    }
+
+    void addBefore(String text, Node prev) {
+        Node newNode = new Node(text, null);
+        newNode.setNext(prev.getNext());
+        prev.setNext(newNode);
+    }
+
+    boolean checkVowel(char data) {
+        String vowels = "ueoaiUEOAI";
+        if (vowels.indexOf(data) != -1) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean addAt(String text, int pos) {
+        if (head == null) {
+            return false;
+        }
+        if (pos == 0) {
+            if (checkVowel(head.getValue().charAt(head.getValue().length() - 1))) {
+                head.setNext(new Node(text, null));
+            } else {
+                head = new Node(text, head);
+            }
+            return true;
+        }
+
+        int i = 0;
+        Node curr = head;
+        Node prev = null; // sai cho addBefore
+        while (curr != null) {
+            if (i == pos) {
+                if (checkVowel(curr.getValue().charAt(curr.getValue().length() - 1))) {
+                    addAfter(text, curr);
+                } else {
+                    addBefore(text, prev);
+                }
+                return true;
+            }
+            prev = curr;
+            curr = curr.getNext();
+            i++;
+        }
+        return false;
     }
 
 }

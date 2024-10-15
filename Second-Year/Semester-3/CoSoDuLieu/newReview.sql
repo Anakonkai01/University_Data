@@ -1,9 +1,4 @@
 
-
-
-
-
-
 -- cau 1  
 delete from Nhanvien
 where MaNV not in (
@@ -25,23 +20,26 @@ set TruongDuAn = (
   select MaNV from Nhanvien as nv
   join Phancong as pc on pc.MaNV = nv.MaNV
   group by MaNV
-  having pc.NgayBD = MIN(NgayBD)
+  having pc.NgayBD = (
+    select MIN(NGayBD) from Phancong
+  )
 )
 where Kinhphi > 100000000
+
 -- cau 2 su dung order by
 update Duan
 set TruongDuAn = (
   select top 1 MaNV from Nhanvien as nv
   join Phancong as pc on pc.MaNV = nv.MaNV
-  order by pc.NgayBD
+  order by pc.NgayBD 
 )
 where Kinhphi > 100000000
 
--- cau 3
+-- cau 3c
 select 
   nv.MaNV,
   nv.Hoten,
-  SUM(DAY(pc.NgayKT) - DAY(pc.NgayBD)) as TongSoNgay
+  SUM(DATEDIFF(DAY,pc.NgayKT,pc.NGayBD)) as TongSoNgay
 from Nhanvien as nv 
 join Phancong as pc on pc.MaNV = nv.MaNV 
 join Duan as da on da.MaDA = pc.MaDA
@@ -53,8 +51,8 @@ select
   nv.MaNV,
   nv.Hoten
 from Nhanvien as nv 
-left join Phancong as pc on pc.MaNV = nv.MaNV
-where YEAR(pc.NgayBD) = 2023 and pc.MaNV is null
+left join Phancong as pc on pc.MaNV = nv.MaNV and year(pc.NgayBD) = 2023
+where pc.MaNV is null 
 
 
 -- cau 5 
@@ -115,7 +113,7 @@ having count(da.TruongDuan) >= count(pc.MaNV);
 -- cau 10 
 select 
   top 1
-  distinct da.TruongDuAn 
+  da.TruongDuAn 
 from Duan as da 
 group by da.TruongDuAn
-order by count(diadiem) desc
+order by count(distinct diadiem) desc
