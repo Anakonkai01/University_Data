@@ -116,14 +116,6 @@ public class StringLinkedList {
         return true;
     }
 
-    prev=null
-
-    Node mid = slow
-
-    reverseList while
-
-    mid->null 1 2 3 4 5|1 2 3 4 1 4 3 2
-
     public Node copy_reverseLinkedList(Node head) {
         StringLinkedList list = new StringLinkedList();
         Node curr = head;
@@ -133,17 +125,6 @@ public class StringLinkedList {
         }
         return list.getHead();
     }
-
-    // public boolean isPalindrome(){
-    // Node slow = head;
-    // Node fast = head;
-    // // fast null thi le
-    // while(fast != null && fast.getNext() != null){
-    // slow = slow.getNext();
-    // fast = fast.getNext().getNext();
-    // }
-
-    // }
 
     public void print() {
         Node curr = head;

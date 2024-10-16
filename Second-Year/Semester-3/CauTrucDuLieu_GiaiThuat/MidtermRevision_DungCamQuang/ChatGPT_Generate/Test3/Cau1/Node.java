@@ -1,3 +1,4 @@
+package ChatGPT_Generate.Test3.Cau1;
 
 public class Node {
     private String value;
