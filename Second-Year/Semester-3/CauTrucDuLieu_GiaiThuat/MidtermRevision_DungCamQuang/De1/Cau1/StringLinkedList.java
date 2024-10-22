@@ -19,6 +19,7 @@ public class StringLinkedList implements LinkedListInterface {
                 return false;
             }
             curr = curr.getNext();
+            
         }
 
         head = new Node(text, head);
