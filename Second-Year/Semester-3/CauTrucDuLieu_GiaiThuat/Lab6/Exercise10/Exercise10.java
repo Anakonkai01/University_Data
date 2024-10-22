@@ -6,8 +6,10 @@ import static Lab6.Exercise2.Main.createTree;
 
 public class Exercise10 {
     public static int countLeaves(TreeNode root) {
-        if(root == null) return 0;
-        if (root.getLeft() == null && root.getRight() == null) return 1;
+        if (root == null)
+            return 0;
+        if (root.getLeft() == null && root.getRight() == null)
+            return 1;
         return countLeaves(root.getLeft()) + countLeaves(root.getRight());
     }
 
