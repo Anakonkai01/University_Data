@@ -86,10 +86,14 @@ public class LinkedList {
         LinkedList list = new LinkedList();
         list.insertAtMiddle("1");
         list.insertAtMiddle("2");
-        // list.insertAtMiddle("3");
-        // list.insertAtMiddle("4");
-        // list.insertAtMiddle("5");
-        list.rotateRight(2);
+        list.insertAtMiddle("3");
+        list.insertAtMiddle("4");
+        list.insertAtMiddle("5");
+        list.insertAtMiddle("6");
+        list.insertAtMiddle("7");
+        list.insertAtMiddle("8");
+        System.out.println(list.size);
+        // list.rotateRight(2);
         list.print();
         System.out.println(list.isSorted());
     }
