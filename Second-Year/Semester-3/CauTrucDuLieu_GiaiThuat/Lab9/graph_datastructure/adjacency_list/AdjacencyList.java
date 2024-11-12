@@ -8,6 +8,22 @@ public class AdjacencyList {
     private List<LinkedList<Integer>> adjList;
     private int vertices;
 
+    public List<LinkedList<Integer>> getAdjList() {
+        return adjList;
+    }
+
+    public void setAdjList(List<LinkedList<Integer>> adjList) {
+        this.adjList = adjList;
+    }
+
+    public int getVertices() {
+        return vertices;
+    }
+
+    public void setVertices(int vertices) {
+        this.vertices = vertices;
+    }
+
     public AdjacencyList(int vertices) {
         this.vertices = vertices;
         adjList = new ArrayList<>(vertices);

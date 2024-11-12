@@ -13,9 +13,25 @@ public class AdjacencyMatrix {
         adjMatrix = new int[vertices][vertices];
     }
 
+    public int[][] getAdjMatrix() {
+        return adjMatrix;
+    }
+
+    public void setAdjMatrix(int[][] adjMatrix) {
+        this.adjMatrix = adjMatrix;
+    }
+
+    public int getVertices() {
+        return vertices;
+    }
+
+    public void setVertices(int vertices) {
+        this.vertices = vertices;
+    }
+
     public void setEdge(int vertexSource, int vertexDestination, int weight) {
         adjMatrix[vertexSource][vertexDestination] = weight;
-        adjMatrix[vertexDestination][vertexSource] = weight; 
+        adjMatrix[vertexDestination][vertexSource] = weight;
     }
 
     public void printAdjMatrix() {
@@ -32,7 +48,7 @@ public class AdjacencyMatrix {
         for (int i = 0; i < vertices; i++) {
             adjList.add(new LinkedList<>());
             for (int j = 0; j < vertices; j++) {
-                if (adjMatrix[i][j] != 0) { 
+                if (adjMatrix[i][j] != 0) {
                     adjList.get(i).add(j);
                 }
             }
@@ -40,7 +56,6 @@ public class AdjacencyMatrix {
         return adjList;
     }
 
-    
     public void printAdjList(List<List<Integer>> adjList) {
         for (int i = 0; i < adjList.size(); i++) {
             System.out.print("Vertex " + i + ": head");
@@ -62,7 +77,6 @@ public class AdjacencyMatrix {
         System.out.println("Adjacency Matrix:");
         graph.printAdjMatrix();
 
-     
         List<List<Integer>> adjList = graph.convertToAL();
         System.out.println("\nAdjacency List:");
         graph.printAdjList(adjList);
