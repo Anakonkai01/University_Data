@@ -43,10 +43,4 @@ public class MyAdjacencyList {
         }
     }
 
-    public void addEdgeWeightedUndirected(int source, int destination){
-        if(!isWeighted){
-            adjListWeighted.get(source).add(destination);
-            adjListWeighted.get(destination).add(source);
-        }
-    }
 }
