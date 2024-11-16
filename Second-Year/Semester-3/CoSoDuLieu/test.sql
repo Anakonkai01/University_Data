@@ -150,3 +150,4 @@ LEFT JOIN Hoadon AS hd ON ct.Sohd = hd.Sohd
     AND (YEAR(hd.Ngaylap) = 2024 AND MONTH(hd.Ngaylap) = 3)
 WHERE hd.Sohd IS NULL;
 
+
