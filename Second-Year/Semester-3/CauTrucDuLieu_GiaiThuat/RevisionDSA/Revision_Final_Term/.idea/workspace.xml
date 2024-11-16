@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8c9bd7f0-fcc3-4ed7-9be4-0491d2932def" name="Changes" comment="thuc hien xong lab 6, lab 7 chua lam bai tap&#10;&#10;thuc hien xong MaxHeap lab8, chua lam cac class khac da dc cai dang trong lab8 + chua thuc hien bai tap lab 8" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Anakonkai01&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Anakonkai01/University_Data.git&quot;,
+    &quot;accountId&quot;: &quot;0e182c1c-0600-4581-9b9c-1bcf3709d929&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;Anakonkai01&quot;,
+    &quot;repository&quot;: &quot;University_Data&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Main.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2opL09DeJOiagUmW3WstzlciezR" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#1 on Anakonkai__Server&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/nhan/Desktop/WorkSpace/University_Data/Second-Year/Semester-3/CauTrucDuLieu_GiaiThuat/RevisionDSA/Revision_Final_Term/src/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8c9bd7f0-fcc3-4ed7-9be4-0491d2932def" name="Changes" comment="" />
+      <created>1731561347096</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731561347096</updated>
+      <workItem from="1731561348181" duration="104000" />
+      <workItem from="1731561459940" duration="105000" />
+      <workItem from="1731561573346" duration="450000" />
+      <workItem from="1731562031747" duration="46000" />
+      <workItem from="1731562087116" duration="679000" />
+      <workItem from="1731563159179" duration="729000" />
+      <workItem from="1731575324734" duration="1159000" />
+      <workItem from="1731641893831" duration="718000" />
+      <workItem from="1731642620012" duration="492000" />
+      <workItem from="1731643120308" duration="450000" />
+      <workItem from="1731653509096" duration="3639000" />
+      <workItem from="1731727281902" duration="7954000" />
+      <workItem from="1731736880410" duration="3301000" />
+    </task>
+    <task id="LOCAL-00001" summary="can thuc hien nhung comment o cuoi file">
+      <option name="closed" value="true" />
+      <created>1731576404496</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731576404496</updated>
+    </task>
+    <task id="LOCAL-00002" summary="can thuc hien nhung comment o cuoi file">
+      <option name="closed" value="true" />
+      <created>1731576455534</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731576455534</updated>
+    </task>
+    <task id="LOCAL-00003" summary="thuc hien xong lab 6, lab 7 chua lam bai tap">
+      <option name="closed" value="true" />
+      <created>1731735184726</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731735184726</updated>
+    </task>
+    <task id="LOCAL-00004" summary="thuc hien xong lab 6, lab 7 chua lam bai tap&#10;&#10;thuc hien xong MaxHeap lab8, chua lam cac class khac da dc cai dang trong lab8 + chua thuc hien bai tap lab 8">
+      <option name="closed" value="true" />
+      <created>1731740901249</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1731740901249</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Anakonkai_Server" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="can thuc hien nhung comment o cuoi file" />
+    <MESSAGE value="thuc hien xong lab 6, lab 7 chua lam bai tap" />
+    <MESSAGE value="thuc hien xong lab 6, lab 7 chua lam bai tap&#10;&#10;thuc hien xong MaxHeap lab8, chua lam cac class khac da dc cai dang trong lab8 + chua thuc hien bai tap lab 8" />
+    <option name="LAST_COMMIT_MESSAGE" value="thuc hien xong lab 6, lab 7 chua lam bai tap&#10;&#10;thuc hien xong MaxHeap lab8, chua lam cac class khac da dc cai dang trong lab8 + chua thuc hien bai tap lab 8" />
+  </component>
+</project>

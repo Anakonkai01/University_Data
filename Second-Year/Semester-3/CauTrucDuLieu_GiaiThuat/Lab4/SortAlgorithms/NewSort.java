@@ -22,7 +22,6 @@ public class NewSort {
         return nums;
     }
 
-
     // de + min
     static int[] selectionSort_deMIN(int[] nums) {
         for (int i = nums.length - 1; i > 0; i--) {
@@ -40,7 +39,7 @@ public class NewSort {
         return nums;
     }
 
-    //acen + min
+    // acen + min
     static int[] selectionSort_acMIN(int[] nums) {
         for (int i = 0; i < nums.length - 1; i++) {
             System.out.println(Arrays.toString(nums));
@@ -72,9 +71,7 @@ public class NewSort {
         return nums;
     }
 
-
     // bubble sort + up
-
 
     // ac + down
     static int[] bubbleSort1(int[] nums) {
@@ -133,66 +130,64 @@ public class NewSort {
         return nums;
     }
 
-
-    static int[] insertionSort1(int[] nums){
-        for(int i = 0; i < nums.length; i++){
+    static int[] insertionSort1(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
             int x = nums[i];
             int j = i - 1;
-            while (j >= 0 && nums[j] > x){
-                nums[j+1] = nums[j];
+            while (j >= 0 && nums[j] > x) {
+                nums[j + 1] = nums[j];
                 j--;
             }
-            nums[j+1] = x;
+            nums[j + 1] = x;
             System.out.println(Arrays.toString(nums));
         }
         return nums;
     }
 
-    static int[] insertionSort2(int[] nums){
-        for(int i = nums.length - 2; i >= 0; i--){
+    static int[] insertionSort2(int[] nums) {
+        for (int i = nums.length - 2; i >= 0; i--) {
             int x = nums[i];
             int j = i + 1;
-            while (j <= nums.length - 1 && nums[j] < x){
-                nums[j-1] = nums[j];
+            while (j <= nums.length - 1 && nums[j] < x) {
+                nums[j - 1] = nums[j];
                 j++;
             }
-            nums[j-1] = x;
+            nums[j - 1] = x;
             System.out.println(Arrays.toString(nums));
         }
         return nums;
     }
 
-    static int[] insertionSort3(int[] nums){
-        for(int i = 0; i < nums.length; i++){
+    static int[] insertionSort3(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
             int x = nums[i];
             int j = i - 1;
-            while (j >= 0 && nums[j] < x){
-                nums[j+1] = nums[j];
+            while (j >= 0 && nums[j] < x) {
+                nums[j + 1] = nums[j];
                 j--;
             }
-            nums[j+1] = x;
+            nums[j + 1] = x;
             System.out.println(Arrays.toString(nums));
         }
         return nums;
     }
 
-    static int[] insertionSort4(int[] nums){
-        for(int i = nums.length - 2; i >= 0; i--){
+    static int[] insertionSort4(int[] nums) {
+        for (int i = nums.length - 2; i >= 0; i--) {
             int x = nums[i];
             int j = i + 1;
-            while (j <= nums.length - 1 && nums[j] > x){
-                nums[j-1] = nums[j];
+            while (j <= nums.length - 1 && nums[j] > x) {
+                nums[j - 1] = nums[j];
                 j++;
             }
-            nums[j-1] = x;
+            nums[j - 1] = x;
             System.out.println(Arrays.toString(nums));
         }
         return nums;
     }
-
 
     public static void main(String[] args) {
-        int[] nums = {12, 11, 15, 8, 1, 4};
+        int[] nums = { 12, 11, 15, 8, 1, 4 };
         nums = insertionSort4(nums);
         System.out.println(Arrays.toString(nums));
     }
