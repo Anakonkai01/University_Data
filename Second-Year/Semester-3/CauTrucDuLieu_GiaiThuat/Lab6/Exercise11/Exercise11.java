@@ -6,8 +6,10 @@ import static Lab6.Exercise2.Main.createTree;
 
 public class Exercise11 {
     public static int sumEvenKeysAtLeaves(TreeNode root) {
-        if(root == null) return 0;
-        if(root.getLeft() == null && root.getRight() == null && root.getVal() % 2 == 0) return root.getVal();
+        if (root == null)
+            return 0;
+        if (root.getLeft() == null && root.getRight() == null && root.getVal() % 2 == 0)
+            return root.getVal();
         return sumEvenKeysAtLeaves(root.getLeft()) + sumEvenKeysAtLeaves(root.getRight());
     }
 

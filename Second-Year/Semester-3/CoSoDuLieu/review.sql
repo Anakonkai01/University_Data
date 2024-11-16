@@ -102,4 +102,33 @@ where da.Kinhphi > 50000000 and da.diadiem = 'Tp.HCM' and pc.NgayKT > '2022-01-0
 
 select 
 	nv.MaNV,
-	SUM(da.Kinhphi)
+	SUM(da.Kinhphi) as TongKinhPhi
+from Nhanvien as nv 
+join Phancong as pc on pc.MaNV = nv.MaNV
+join Duan as da on da.MaDA = pc.MaDA
+group by nv.MaNV
+
+
+
+delete from Duan
+where MaDA IN(
+  select MaDA from Phancong
+  where YEAR(NgayKT) < 2010 and MaNV is null
+)
+
+
+
+select 
+  da.*
+from Duan as da 
+join Nhanvien as nv on nv.MaNV = da.MaNV
+where nv.MaPhong = 'P002'
+
+
+
+select 
+  nv.*
+from Nhanvien as nv 
+join Phancong as pc on pc.MaNV = nv.MaNV
+join Duan as da on da.MaDA = pc.MaDA
+where da.diadiem = 'Da Nang' and pc.NgayBD > '2021-01-01' pc.NgayKT < '2023-12-31'
