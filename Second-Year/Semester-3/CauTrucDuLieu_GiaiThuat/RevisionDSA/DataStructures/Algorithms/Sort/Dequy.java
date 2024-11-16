@@ -1,5 +1,6 @@
-import java.util.Arrays;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 public class Dequy {
     public static String reverseString(String str) {
@@ -61,13 +62,50 @@ public class Dequy {
 
     }
 
-    public static void main(String[] args) {
-        Random random = new Random();
-        int[] nums = new int[10];
-        for (int i = 0; i < 10; i++) {
-            nums[i] = random.nextInt(100);
+    public static List<String> generateParenthesis(int n) {
+        List<String> list = new ArrayList<>();
+        backtracking(n, new Stack<>(), list, 0, 0);
+        return list;
+    }
+
+    static void backtracking(int n, Stack<Character> stack, List<String> listString, int openNumber, int closeNumber) {
+        if (openNumber == n && closeNumber == n) {
+            StringBuilder builder = new StringBuilder();
+
+            for (char c : stack) {
+                builder.append(c);
+            }
+            listString.add(builder.toString());
+            return;
         }
-        selectionSort(nums, 0);
-        System.out.println(Arrays.toString(nums));
+        if (openNumber < n) {
+            stack.push('(');
+            backtracking(n, stack, listString, openNumber + 1, closeNumber);
+            stack.pop();
+        }
+        if (closeNumber < openNumber) {
+            stack.push(')');
+            backtracking(n, stack, listString, openNumber, closeNumber + 1);
+            stack.pop();
+        }
+    }
+
+    // valid parenthesis
+    // EvalNumber
+
+    public static double gcd(double a, double b) {
+        if (b == 0)
+            return a;
+        return gcd(a, a % b);
+    }
+
+    public static int combination(int k, int n) {
+        if (k == 0 || k == n)
+            return 1;
+        return combination(k - 1, n - 1) + combination(k, n - 1);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(combination(3, 5));
     }
 }

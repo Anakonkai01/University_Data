@@ -2,15 +2,15 @@ package Lab3.Exercise6;
 
 public class Exercise6 {
     // a
-    public static int minimumRecursive(int[] a, int size) {
-        if (size == 1) {
-            return a[0];
+        public static int minimumRecursive(int[] a, int size) {
+            if (size == 1) {
+                return a[0];
+            }
+
+            int minRest = minimumRecursive(a, size - 1);
+
+            return Math.min(a[size - 1], minRest);
         }
-
-        int minRest = minimumRecursive(a, size - 1);
-
-        return Math.min(a[size - 1], minRest);
-    }
 
     // b
     public static int sumAllElement(int[] a, int size){
