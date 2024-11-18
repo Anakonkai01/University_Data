@@ -1,115 +1,172 @@
 package Lab8_Revision;
 
 public class MaxHeap {
-    private final int[] heap;
+    private int[] heap;
     private int size;
-    private final int capacity;
+    private int maxSize;
 
-    public MaxHeap(int capacity) {
-        this.capacity = capacity;
+    public MaxHeap(int maxSize) {
+        this.maxSize = maxSize;
         this.size = 0;
-        this.heap = new int[capacity];
-    }
-
-    public int getParentIndex(int index) {
-        return (index - 1) / 2;
-    }
-
-    public int getLeftChildIndex(int index) {
-        return 2 * index + 1;
-    }
-
-    public int getRightChildIndex(int index) {
-        return 2 * index + 2;
+        this.heap = new int[maxSize];
     }
 
     // insert
-    public void insert(int value) {
-        if(size == capacity) {
+    public void insert(int data) {
+        if (size == maxSize) {
             System.out.println("Heap is full");
             return;
         }
-        heap[size] = value;
 
-        // heapify up
-        heapify_up(size);
-        // increase size
+        heap[size] = data;
+        heapifyUp(size - 1);
         size++;
     }
 
-    public void swap(int index1, int index2) {
-        int temp = heap[index1];
-        heap[index1] = heap[index2];
-        heap[index2] = temp;
+    // get parent
+    public int getParent(int i) {
+        return (i - 1) / 2;
     }
 
-    public void heapify_up(int i){
-        while(i > 0 && heap[i] > heap[getParentIndex(i)]) {
-            swap(i, getParentIndex(i));
-            i = getParentIndex(i);
-        }
+    // get left child
+    public int getLeftChild(int i) {
+        return 2 * i + 1;
     }
 
-    public void heapify_down(int i){
-        int leftChildIndex = getLeftChildIndex(i);
-        int rightChildIndex = getRightChildIndex(i);
-        int largest = i;
-
-        if(leftChildIndex < size && heap[leftChildIndex] > heap[largest]) {
-            largest = leftChildIndex;
-        }
-
-        if(rightChildIndex < size && heap[rightChildIndex] > heap[largest]) {
-            largest = rightChildIndex;
-        }
-
-        if(largest != i) {
-            swap(i, largest);
-            heapify_down(largest);
-        }
+    // get right child
+    public int getRightChild(int i) {
+        return 2 * i + 2;
     }
 
-
-    public int extractMax() {
-        if(size <= 0){
-            throw new IllegalArgumentException("Heap is empty");
-        }
-        // take the max value in the root of max heap
-        int max = heap[0];
-        // replace root by the last child
-        heap[0] = heap[size - 1];
-        size--;
-        // heapify-down the root
-        heapify_down(0);
-        return max;
-    }
-
+    // get max
     public int getMax() {
         return heap[0];
     }
 
+    // heapify up
+    public void heapifyUp(int i) {
+        while (i > 0 && heap[i] > heap[getParent(i)]) {
+            swap(i, getParent(i));
+            i = getParent(i);
+        }
+    }
 
+    // swap
+    public void swap(int i, int j) {
+        int temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+    }
 
-    // delete
-    public void delete(int i){
-        if(i < 0 || i >= size){
-            throw new IllegalArgumentException("Heap is empty");
+    // heapify down
+    public void heapifyDown(int i) {
+        int left = getLeftChild(i);
+        int right = getRightChild(i);
+        int largest = i;
+
+        if (left < size && heap[left] > heap[largest]) {
+            largest = left;
         }
 
-        if(i == size - 1){
+        if (right < size && heap[right] > heap[largest]) {
+            largest = right;
+        }
+
+        if (largest != i) {
+            swap(i, largest);
+            heapifyDown(largest);
+        }
+    }
+
+    // decrease key
+    public void decreaseKey(int i, int new_val) {
+        heap[i] = new_val;
+        heapifyUp(i);
+    }
+
+    // increase key
+    public void increaseKey(int i, int new_val) {
+        heap[i] = new_val;
+        heapifyDown(i);
+    }
+
+    // delete max
+    public void deleteMax() {
+        heap[0] = heap[size - 1];
+        size--;
+        heapifyDown(0);
+    }
+
+    // extract max
+    public int extractMax() {
+        if (size <= 0) {
+            return Integer.MAX_VALUE;
+        }
+
+        if (size == 1) {
             size--;
+            return heap[0];
+        }
+
+        int root = heap[0];
+        heap[0] = heap[size - 1];
+        size--;
+        heapifyDown(0);
+
+        return root;
+    }
+
+    // build max heap
+    public void buildMaxheap() {
+        for (int i = size / 2 - 1; i >= 0; i--) {
+            heapifyDown(i);
+        }
+    }
+
+    // display heap
+    public void display() {
+        for (int i = 0; i < size; i++) {
+            System.out.print(heap[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // search
+    public int search(int data) {
+        for (int i = 0; i < size; i++) {
+            if (heap[i] == data) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // delete
+    public void delete(int data) {
+        int index = search(data);
+        if (index == -1) {
+            System.out.println("Data not found");
             return;
         }
 
-        heap[i] = heap[size - 1];
+        heap[index] = heap[size - 1];
         size--;
+        heapifyDown(index);
+    }
 
-        if(i > 0 && heap[i] > heap[getParentIndex(i)]){
-            heapify_up(i);
+    // change value
+    public void changeValue(int data, int newValue) {
+        int index = search(data);
+        if (index == -1) {
+            System.out.println("Data not found");
+            return;
         }
-        else{
-            heapify_down(i);
+
+        heap[index] = newValue;
+        if (newValue > data) {
+            heapifyDown(index);
+        } else {
+            heapifyUp(index);
         }
     }
-    // change value
 }
