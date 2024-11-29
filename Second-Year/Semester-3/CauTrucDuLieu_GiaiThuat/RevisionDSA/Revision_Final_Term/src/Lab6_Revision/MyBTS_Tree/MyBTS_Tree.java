@@ -1,7 +1,5 @@
 package Lab6_Revision.MyBTS_Tree;
 
-import com.sun.jdi.IntegerType;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -129,6 +127,7 @@ public class MyBTS_Tree {
         return deleteMin(node.getLeft());
     }
 
+    
     // deleteNode
     public static Node deleteNode(Node node, int data){
         if(node == null){
@@ -160,6 +159,27 @@ public class MyBTS_Tree {
     }
 
     // find successor
+    public static Node findSuccessor(Node node, int data){
+        Node current = search(node, data);
+        if(current == null){
+            return null;
+        }
+        if(current.getRight() != null){
+            return getMin(current.getRight());
+        }
+        Node successor = null;
+        Node ancestor = node;
+        while(ancestor != current){
+            if(current.getData() < ancestor.getData()){
+                successor = ancestor;
+                ancestor = ancestor.getLeft();
+            }
+            else{
+                ancestor = ancestor.getRight();
+            }
+        }
+        return successor;
+    }
 
     // delete predecessor
     // delete successor

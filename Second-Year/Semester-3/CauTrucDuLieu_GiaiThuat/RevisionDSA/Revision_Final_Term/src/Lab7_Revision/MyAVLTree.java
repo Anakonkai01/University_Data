@@ -1,6 +1,5 @@
 package Lab7_Revision;
 
-import static Lab6_Revision.MyBTS_Tree.MyBTS_Tree.getMin;
 
 public class MyAVLTree {
     // insert
