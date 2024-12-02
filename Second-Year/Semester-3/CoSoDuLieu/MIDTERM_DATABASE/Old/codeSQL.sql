@@ -8,7 +8,7 @@ GO
 
 -- Bảng KhachHang
 CREATE TABLE KhachHang (
-    MaKH VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
+    MaKH VARCHAR(10) PRIMARY KEY, 
     TenKH NVARCHAR(100) NOT NULL,
     DiaChi NVARCHAR(255),
     SoDienThoai VARCHAR(15),
@@ -17,7 +17,7 @@ CREATE TABLE KhachHang (
 
 -- Bảng HopDong
 CREATE TABLE HopDong (
-    MaHD VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
+    MaHD VARCHAR(10) PRIMARY KEY, 
     MaKH VARCHAR(10) NOT NULL,
     NgayKyKet DATE NOT NULL,
     TongTien DECIMAL(18, 2) NOT NULL,
@@ -27,8 +27,8 @@ CREATE TABLE HopDong (
 
 -- Bảng SuKien
 CREATE TABLE SuKien (
-    MaSuKien VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
-    MaHD VARCHAR(10) NOT NULL,
+    MaSuKien VARCHAR(10) PRIMARY KEY,
+    MaHD VARCHAR(10) NOT NULL, -- có nên set unique ko
     TenSuKien NVARCHAR(100) NOT NULL,
     NgayToChuc DATE NOT NULL,
     NgayKetThuc DATE NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE SuKien (
 
 -- Bảng DichVu
 CREATE TABLE DichVu (
-    MaDV VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
+    MaDV VARCHAR(10) PRIMARY KEY,
     TenDV NVARCHAR(100) NOT NULL,
     DonGia DECIMAL(18, 2) NOT NULL,
     MoTa NVARCHAR(255),
@@ -49,7 +49,7 @@ CREATE TABLE DichVu (
 
 -- Bảng ChiTietDichVuHopDong
 CREATE TABLE ChiTietDichVuHopDong (
-    MaChiTietDV VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
+    MaChiTietDV VARCHAR(10) PRIMARY KEY,
     MaHD VARCHAR(10) NOT NULL,
     MaDV VARCHAR(10) NOT NULL,
     SoLuong INT NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE ChiTietDichVuHopDong (
 
 -- Bảng Loa
 CREATE TABLE Loa (
-    MaLoa VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
+    MaLoa VARCHAR(10) PRIMARY KEY,
     MaDV VARCHAR(10) NOT NULL,
     LoaiLoa NVARCHAR(100),
     CongSuat DECIMAL(18, 2),
@@ -71,7 +71,7 @@ CREATE TABLE Loa (
 
 -- Bảng Den
 CREATE TABLE Den (
-    MaDen VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
+    MaDen VARCHAR(10) PRIMARY KEY,
     MaDV VARCHAR(10) NOT NULL,
     LoaiDen NVARCHAR(100),
     CongSuat DECIMAL(18, 2),
@@ -81,7 +81,7 @@ CREATE TABLE Den (
 
 -- Bảng NhaBanhU
 CREATE TABLE NhaBanhU (
-    MaNhaBanhU VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
+    MaNhaBanhU VARCHAR(10) PRIMARY KEY,
     MaDV VARCHAR(10) NOT NULL,
     DienTich DECIMAL(18, 2),
     DonGia DECIMAL(18, 2),
@@ -90,7 +90,7 @@ CREATE TABLE NhaBanhU (
 
 -- Bảng NhaTienChe
 CREATE TABLE NhaTienChe (
-    MaNhaTienChe VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
+    MaNhaTienChe VARCHAR(10) PRIMARY KEY,
     MaDV VARCHAR(10) NOT NULL,
     DienTich DECIMAL(18, 2),
     DonGia DECIMAL(18, 2),
@@ -99,7 +99,7 @@ CREATE TABLE NhaTienChe (
 
 -- Bảng CongHoiCho
 CREATE TABLE CongHoiCho (
-    MaCongHoiCho VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
+    MaCongHoiCho VARCHAR(10) PRIMARY KEY,
     MaDV VARCHAR(10) NOT NULL,
     LoaiCong NVARCHAR(100),
     DonGia DECIMAL(18, 2),
@@ -108,7 +108,7 @@ CREATE TABLE CongHoiCho (
 
 -- Bảng ThanhToan
 CREATE TABLE ThanhToan (
-    MaThanhToan VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
+    MaThanhToan VARCHAR(10) PRIMARY KEY,
     MaHD VARCHAR(10) NOT NULL,
     SoTien DECIMAL(18, 2) NOT NULL,
     NgayThanhToan DATE NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE ThanhToan (
 
 -- Bảng NhanSu
 CREATE TABLE NhanSu (
-    MaNS VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
+    MaNS VARCHAR(10) PRIMARY KEY,
     TenNS NVARCHAR(100) NOT NULL,
     ChucVu NVARCHAR(50),
     SoDienThoai VARCHAR(15),
@@ -128,7 +128,7 @@ CREATE TABLE NhanSu (
 
 -- Bảng PhanCong
 CREATE TABLE PhanCong (
-    MaPhanCong VARCHAR(10) PRIMARY KEY, -- Tự phát sinh
+    MaPhanCong VARCHAR(10) PRIMARY KEY, 
     MaSuKien VARCHAR(10) NOT NULL,
     MaNS VARCHAR(10) NOT NULL,
     VaiTro NVARCHAR(100),
@@ -207,7 +207,7 @@ BEGIN
         WHERE TongTien <= 0
     )
     BEGIN
-        RAISERROR('TongTien phải lớn hơn 0.', 16, 1);
+        RAISERROR(N'TongTien phải lớn hơn 0.', 16, 1);
         ROLLBACK TRANSACTION;
         RETURN;
     END;

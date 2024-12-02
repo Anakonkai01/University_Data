@@ -1,0 +1,1 @@
+[Nhan vien] (MaNV, Ten) (MaNV: PK) - [Phong ban] (MaPB, TenPB) (MaPB: PK): 1 - 1
