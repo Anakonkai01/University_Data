@@ -1,0 +1,1 @@
+hỏi thầy phần 2 câu b, có được sử dụng format giống bài kiểm tra hôm qua 

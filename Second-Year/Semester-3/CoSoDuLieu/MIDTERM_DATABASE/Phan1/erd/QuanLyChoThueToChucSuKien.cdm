@@ -1237,7 +1237,7 @@ NameToCode=Yes
 CheckModel=Yes
 SaveLinks=Yes
 NameToCode=No</a:ModelOptionsText>
-<a:RepositoryFilename>C:\WORKSPACE 2024\University_Data\Second-Year\Semester-3\CoSoDuLieu\MIDTERM_DATABASE\Phan1\QuanLyChoThueToChucSuKien.cdm</a:RepositoryFilename>
+<a:RepositoryFilename>C:\WORKSPACE 2024\University_Data\Second-Year\Semester-3\CoSoDuLieu\MIDTERM_DATABASE\Phan1\erd\QuanLyChoThueToChucSuKien.cdm</a:RepositoryFilename>
 <c:GeneratedModels>
 <o:Shortcut Id="o3">
 <a:ObjectID>8DD32441-41EB-4386-A12E-9C4A62984005</a:ObjectID>
@@ -1950,7 +1950,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 <o:InheritanceRootLinkSymbol Id="o36">
 <a:CreationDate>1732772929</a:CreationDate>
 <a:ModificationDate>1732772970</a:ModificationDate>
-<a:Rect>((-53316,-360), (-46977,1284))</a:Rect>
+<a:Rect>((-53316,-360), (-46977,1283))</a:Rect>
 <a:ListOfPoints>((-52916,265),(-47377,265))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -4304,7 +4304,7 @@ DISPNAME 0 Arial,8,N</a:FontList>
 <a:Code>RELATIONALMODEL</a:Code>
 <a:CreationDate>1733297657</a:CreationDate>
 <a:Creator>nguye</a:Creator>
-<a:ModificationDate>1733297852</a:ModificationDate>
+<a:ModificationDate>1733297764</a:ModificationDate>
 <a:Modifier>nguye</a:Modifier>
 <a:TargetModelURL>file:///C|/WORKSPACE 2024/University_Data/Second-Year/Semester-3/CoSoDuLieu/MIDTERM_DATABASE/Phan1/relational_model/RelationalModel.pdm</a:TargetModelURL>
 <a:TargetModelID>133191B3-651A-4142-A865-DB2280195D67</a:TargetModelID>

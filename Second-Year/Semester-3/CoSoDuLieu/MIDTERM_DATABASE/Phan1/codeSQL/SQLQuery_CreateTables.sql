@@ -19,12 +19,14 @@ CREATE TABLE HopDong (
     NgayKyKet DATE NOT NULL,
     TongTien DECIMAL(18, 2) NOT NULL,
     TrangThaiHopDong NVARCHAR(50),
+    MaSK VARCHAR(10) UNIQUE, -- Each HopDong may reference one SuKien
     CONSTRAINT FK_HopDong_KhachHang FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH)
 );
 
 -- Tạo bảng SuKien
 CREATE TABLE SuKien (
-    MaHD VARCHAR(10) CONSTRAINT PK_SuKien PRIMARY KEY,
+    MaSK VARCHAR(10) CONSTRAINT PK_SuKien PRIMARY KEY,
+    MaHD VARCHAR(10) NOT NULL UNIQUE, -- Each SuKien must reference one HopDong
     TenSuKien NVARCHAR(100) NOT NULL,
     NgayToChuc DATE NOT NULL,
     NgayKetThuc DATE,

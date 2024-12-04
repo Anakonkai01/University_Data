@@ -3,7 +3,7 @@ ON HopDong
 AFTER INSERT, UPDATE
 AS
 BEGIN
-    -- Kiểm tra khóa ngoại (MaKH phải tồn tại trong bảng KhachHang)
+    -- Check Foreign Key (MaKH must exist in KhachHang)
     IF EXISTS (
         SELECT 1
         FROM inserted
@@ -15,7 +15,7 @@ BEGIN
         RETURN;
     END;
 
-    -- Kiểm tra miền giá trị (TongTien phải >= 0)
+    -- Check Domain Constraint (TongTien must be >= 0)
     IF EXISTS (
         SELECT 1
         FROM inserted
@@ -27,17 +27,29 @@ BEGIN
         RETURN;
     END;
 
-    -- Lệnh Trigger kết thúc
-END;
+    -- Check Not Null Constraint (NgayKyKet cannot be NULL)
+    IF EXISTS (
+        SELECT 1
+        FROM inserted
+        WHERE NgayKyKet IS NULL
+    )
+    BEGIN
+        RAISERROR ('NgayKyKet không được NULL.', 16, 1);
+        ROLLBACK TRANSACTION;
+        RETURN;
+    END;
 
+    -- Trigger Execution Ends
+END;
+GO
 
 
 -- test case
-
+-- Valid insert: Existing MaKH, valid TongTien, and non-null NgayKyKet
 INSERT INTO HopDong (MaHD, MaKH, NgayKyKet, TongTien, TrangThaiHopDong)
 VALUES ('HD0006', 'KH0001', '2023-12-01', 12000000, 'Active');
 
-
+-- invalid
 INSERT INTO HopDong (MaHD, MaKH, NgayKyKet, TongTien, TrangThaiHopDong)
 VALUES ('HD0007', 'KH999', '2023-12-01', 15000000, 'Active');
 
@@ -48,5 +60,5 @@ INSERT INTO HopDong (MaHD, MaKH, NgayKyKet, TongTien, TrangThaiHopDong)
 VALUES ('HD0009', 'KH0001', NULL, 10000000, 'Active');
 
 UPDATE HopDong
-SET TongTien = 18000000
-
+SET TongTien = -18000000
+WHERE MaHD = 'HD0006';

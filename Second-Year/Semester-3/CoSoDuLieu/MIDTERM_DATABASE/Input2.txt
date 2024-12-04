@@ -1,0 +1,7 @@
+R(A, B, C, D, E, G, H)
+A -> BC
+BE -> G
+E -> D
+D -> G
+A -> B
+AG -> BC
