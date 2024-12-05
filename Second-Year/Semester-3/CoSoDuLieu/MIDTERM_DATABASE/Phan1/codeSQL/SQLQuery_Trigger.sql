@@ -3,62 +3,50 @@ ON HopDong
 AFTER INSERT, UPDATE
 AS
 BEGIN
-    -- Check Foreign Key (MaKH must exist in KhachHang)
+    -- Khai báo biến đếm lỗi
+    DECLARE @ErrorCount INT = 0;
+
+    -- Kiểm tra khóa ngoại (MaKH phải tồn tại trong KhachHang)
     IF EXISTS (
         SELECT 1
-        FROM inserted
-        WHERE NOT EXISTS (SELECT 1 FROM KhachHang WHERE KhachHang.MaKH = inserted.MaKH)
+        FROM inserted i
+        LEFT JOIN KhachHang k ON i.MaKH = k.MaKH
+        WHERE k.MaKH IS NULL
     )
     BEGIN
-        RAISERROR ('MaKH không tồn tại trong bảng KhachHang.', 16, 1);
-        ROLLBACK TRANSACTION;
-        RETURN;
+        RAISERROR (N'MaKH không tồn tại trong bảng KhachHang.', 16, 1);
+        SET @ErrorCount = @ErrorCount + 1;
     END;
 
-    -- Check Domain Constraint (TongTien must be >= 0)
+    -- Kiểm tra ràng buộc miền giá trị (TongTien phải >= 0)
     IF EXISTS (
         SELECT 1
         FROM inserted
         WHERE TongTien < 0
     )
     BEGIN
-        RAISERROR ('TongTien phải lớn hơn hoặc bằng 0.', 16, 1);
-        ROLLBACK TRANSACTION;
-        RETURN;
+        RAISERROR (N'TongTien phải lớn hơn hoặc bằng 0.', 16, 1);
+        SET @ErrorCount = @ErrorCount + 1;
     END;
 
-    -- Check Not Null Constraint (NgayKyKet cannot be NULL)
+    -- Kiểm tra ràng buộc Not Null (NgayKyKet không được NULL)
     IF EXISTS (
         SELECT 1
         FROM inserted
         WHERE NgayKyKet IS NULL
     )
     BEGIN
-        RAISERROR ('NgayKyKet không được NULL.', 16, 1);
+        RAISERROR (N'NgayKyKet không được NULL.', 16, 1);
+        SET @ErrorCount = @ErrorCount + 1;
+    END;
+
+    -- Nếu có lỗi, rollback giao dịch
+    IF @ErrorCount > 0
+    BEGIN
         ROLLBACK TRANSACTION;
         RETURN;
     END;
 
-    -- Trigger Execution Ends
+    -- Kết thúc Trigger
 END;
 GO
-
-
--- test case
--- Valid insert: Existing MaKH, valid TongTien, and non-null NgayKyKet
-INSERT INTO HopDong (MaHD, MaKH, NgayKyKet, TongTien, TrangThaiHopDong)
-VALUES ('HD0006', 'KH0001', '2023-12-01', 12000000, 'Active');
-
--- invalid
-INSERT INTO HopDong (MaHD, MaKH, NgayKyKet, TongTien, TrangThaiHopDong)
-VALUES ('HD0007', 'KH999', '2023-12-01', 15000000, 'Active');
-
-INSERT INTO HopDong (MaHD, MaKH, NgayKyKet, TongTien, TrangThaiHopDong)
-VALUES ('HD0008', 'KH0001', '2023-12-01', -10000000, 'Active');
-
-INSERT INTO HopDong (MaHD, MaKH, NgayKyKet, TongTien, TrangThaiHopDong)
-VALUES ('HD0009', 'KH0001', NULL, 10000000, 'Active');
-
-UPDATE HopDong
-SET TongTien = -18000000
-WHERE MaHD = 'HD0006';
