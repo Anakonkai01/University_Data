@@ -3,8 +3,6 @@ ON HopDong
 AFTER INSERT, UPDATE
 AS
 BEGIN
-    DECLARE @ErrorCount INT = 0;
-
     -- Kiểm tra khóa ngoại (MaKH phải tồn tại trong KhachHang)
     IF EXISTS (
         SELECT 1
@@ -14,18 +12,20 @@ BEGIN
     )
     BEGIN
         RAISERROR (N'MaKH không tồn tại trong bảng KhachHang.', 16, 1);
-        SET @ErrorCount = @ErrorCount + 1;
+        ROLLBACK TRANSACTION;
+        RETURN;
     END;
 
     -- Kiểm tra ràng buộc miền giá trị (TongTien phải >= 0)
-    IF EXISTS (
+    IF EXISTS ( 
         SELECT 1
         FROM inserted
         WHERE TongTien < 0
     )
     BEGIN
         RAISERROR (N'TongTien phải lớn hơn hoặc bằng 0.', 16, 1);
-        SET @ErrorCount = @ErrorCount + 1;
+        ROLLBACK TRANSACTION;
+        RETURN;
     END;
 
     -- Kiểm tra mã hợp đồng đã tồn tại trong HopDong
@@ -36,16 +36,12 @@ BEGIN
     )
     BEGIN
         RAISERROR (N'Mã hợp đồng đã tồn tại trong hệ thống.', 16, 1);
-        SET @ErrorCount = @ErrorCount + 1;
-    END;
-
-    IF @ErrorCount > 0
-    BEGIN
         ROLLBACK TRANSACTION;
         RETURN;
     END;
 END;
 GO
+
 
 
 

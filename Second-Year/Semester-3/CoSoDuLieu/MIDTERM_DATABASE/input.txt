@@ -4,8 +4,6 @@ file input.txt
 file output.txt
 [KhachHang] (MaKH, TenKH, DiaChi, SoDienThoai, Email) (MaKH: PK) - [HopDong] (MaHD, NgayKyKet, TongTien, TrangThaiHopDong, MaKH) (MaHD: PK, MaKH: FK): 1 - n
 
-tương tự như vậy với trường hợp n-1
-
 
 trường hợp n - n
 input.txt 
@@ -22,19 +20,11 @@ output.txt
 [HopDong] (MaHD, NgayKyKet, TongTien, TrangThaiHopDong) (MaHD: PK)- [SuKien] (MaSK, TenSuKien, NgayToChuc, NgayKetThuc, DiaDiem, MoTa, MaHD) (MaSK: PK, MaHD: FK): 1 - 1
 
 
-
 trường hợp thuộc tính đa trị
 input.txt
 [Nhan vien] (MaNV, Ten, SoDT) (MaNV: PK, SoDT: Multivalued)
 output.txt
 [Nhan vien] (MaNV, Ten) (PK: MaNV) -[Nhanvien_SoDT] (MaNV, SoDT) (MaNV: PK, SoDT: PK, MaNV: FK): 1 - n
-
-trường hợp mối quan hệ có thuộc tính thì giống như quan hệ n - n nhưng trong bảng trung gian thì có thêm thuộc tính đó
-input.txt 
-[SuKien] (MaSK, TenSK, NgayToChuc, NgayKetThuc, DiaDiem, MoTa) (MaSK: PK) - [NhanSu] (MaNS, TenNS, ChucVu, SoDienThoai, Email) (MaNS: PK): với [PhanCong] (MaPC, VaiTro, NgayPhanCong) (MaPC: PK)
-output.txt 
-[SuKien] (MaSK, TenSK, NgayToChuc, NgayKetThuc, DiaDiem, MoTa) (MaSK: PK) - [PhanCong] (MaSK, MaNS, VaiTro, NgayPhanCong) (MaSK: PK, MaNS: PK, MaSK: FK, MaNS: FK): 1 - n
-[NhanSu] (MaNS, TenNS, ChucVu, SoDienThoai, Email) (MaNS: PK) - [PhanCong] (MaSK, MaNS, VaiTro, NgayPhanCong) (MaSK: PK, MaNS: PK, MaSK: FK, MaNS: FK): 1 - n
 
 
 trường hợp quan hệ cha con 
