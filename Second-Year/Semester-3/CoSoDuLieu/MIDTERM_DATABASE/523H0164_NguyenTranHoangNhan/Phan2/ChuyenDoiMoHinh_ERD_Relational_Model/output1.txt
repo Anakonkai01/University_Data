@@ -1,0 +1,11 @@
+[KhachHang] (MaKH, TenKH, DiaChi, SoDienThoai, Email) (MaKH: PK) - [HopDong] (MaHD, MaKH, NgayKyKet, TongTien, TrangThaiHopDong) (MaHD: PK, MaKH: FK): 1 - n
+
+[SuKien] (MaSK, TenSK, NgayToChuc, NgayKetThuc, DiaDiem, MoTa) (MaSK: PK) - [SuKien_NhanSu] (MaSK, MaNS, MaSK, MaNS) (MaSK: PK, MaNS: PK, MaSK: FK, MaNS: FK): 1 - n
+[NhanSu] (MaNS, TenNS, ChucVu, SoDienThoai, Email) (MaNS: PK) - [SuKien_NhanSu] (MaSK, MaNS, MaSK, MaNS) (MaSK: PK, MaNS: PK, MaSK: FK, MaNS: FK): 1 - n
+
+[HopDong] (MaHD, NgayKyKet, TongTien, TrangThaiHopDong) (MaHD: PK) - [SuKien] (MaSK, MaHD, TenSuKien, NgayToChuc, NgayKetThuc, DiaDiem, MoTa) (MaSK: PK, MaHD: FK): 1 - 1
+
+[Nhan vien] (MaNV, Ten) (MaNV: PK, SoDT: Multivalued) -[Nhan vien_SoDT] (MaNV, SoDT, MaNV) (MaNV: PK, SoDT: PK, MaNV: FK): 1 - n
+
+[DichVu] (MaDV, TenDV, DonGiaDichVu, TinhTrangDV, DonViTinh, MoTaDV) (MaDV: PK) - [Loa] (MaLoa, MaDV, LoaiLoa, CongSuat, DonGiaLoa) (MaLoa: PK, MaDV: FK): 1 - 1
+
